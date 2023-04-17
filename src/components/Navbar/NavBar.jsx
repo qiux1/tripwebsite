@@ -1,6 +1,7 @@
 import React from 'react'
 import './navbar.css'
 import { SiYourtraveldottv } from 'react-icons/si'
+import { AiFillCloseCircle } from 'react-icons/ai'
 const NavBar = () => {
   return (
     <section className='navBarSection'>
@@ -33,7 +34,23 @@ const NavBar = () => {
             <li className='navItem'>
               <a href='#' className='navLink'>Blog</a>
             </li>
+
+            <div className='headerBtns flex'>
+              <button className='btn loginBtn'>
+                <a href='#'>Login</a>
+              </button>
+            </div>
+
+            <div className='headerBtns flex'>
+              <button className='btn signUpBtn'>
+                <a href='#'>Sign Up</a>
+              </button>
+            </div>
           </ul>
+
+          <div className='closeNavBar'>
+            <AiFillCloseCircle className="icon"></AiFillCloseCircle>
+          </div>
         </div>
       </div>
     </section>
