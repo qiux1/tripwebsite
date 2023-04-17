@@ -2,6 +2,7 @@ import React from 'react'
 import './navbar.css'
 import { SiYourtraveldottv } from 'react-icons/si'
 import { AiFillCloseCircle } from 'react-icons/ai'
+import {TbGridDots} from 'react-icons/tb'
 const NavBar = () => {
   return (
     <section className='navBarSection'>
@@ -13,6 +14,7 @@ const NavBar = () => {
             </h1>
           </a>
         </div>
+
         <div className='navBar'>
           <ul className='navLists flex'>
             <li className='navItem'>
@@ -51,6 +53,10 @@ const NavBar = () => {
           <div className='closeNavBar'>
             <AiFillCloseCircle className="icon"></AiFillCloseCircle>
           </div>
+        </div>
+
+        <div className='toggleNavBar'>
+          <TbGridDots className='icon'/>
         </div>
       </div>
     </section>
