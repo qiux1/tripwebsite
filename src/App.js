@@ -7,6 +7,7 @@ import Offers from './components/Offers/Offers'
 import About from './components/About/About'
 import Blog from './components/Blog/Blog'
 import Footer from './components/Footer/Footer'
+import BudgetTracker from './components/BudgetTracker/BudgetTracker';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <HomePage/>
         <Popular/>
         <Offers/>
+        <BudgetTracker/>
         <About/>
         <Blog/>
         <Footer/>
