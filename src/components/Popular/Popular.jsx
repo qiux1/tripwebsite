@@ -1,7 +1,11 @@
 import React from 'react'
 import './Popular.scss'
 
-import {BsArrowLeftShort, BsArrowRightShort} from 'react-icons/bs'
+import {BsDot, BsArrowLeftShort, BsArrowRightShort} from 'react-icons/bs'
+
+import img from '../../assets/image5.jpg'
+
+
 const Popular = () => {
   return (
     <section className='popular section container'>
@@ -27,9 +31,33 @@ const Popular = () => {
         <div className='mainContent flex'>
           <div className='singleDestination'>
             <div className='desImage'>
-              <img src='' alt='Image TItle'>
+              <img src={img} alt='Image TItle' />
               
-              </img>
+              <div className='overlayInfo'>
+                <h3>Title holder</h3>
+                <p>Text holder</p>
+
+                <BsArrowRightShort className='icon'/>
+              </div>
+
+            </div>
+
+            <div className='destFooter'>
+              <div className='number'>
+                01
+              </div>
+
+              <div className='destText flex'>
+                <h6>
+                  city
+                </h6>
+                <span className='flex'>
+                  <span className='dot'>
+                    <BsDot className='icon'/>
+                  </span>
+                  GoGoGetaway
+                </span>
+              </div>
             </div>
           </div>
         </div>

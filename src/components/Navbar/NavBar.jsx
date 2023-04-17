@@ -20,7 +20,7 @@ const removeNav=()=>{
         <div className='logoDiv'>
           <a href="#" className='logo'>
             <h1><SiYourtraveldottv className="icon"/>
-            Dot
+            GoGoGetaway
             </h1>
           </a>
         </div>
