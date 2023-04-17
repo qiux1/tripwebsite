@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './BudgetTracker.scss';
 
 const BudgetTracker = () => {
   const [budget, setBudget] = useState([]);
@@ -22,27 +23,36 @@ const BudgetTracker = () => {
   };
 
   return (
-    <div>
-      <h1>Budget Tracker</h1>
-      <form onSubmit={addExpense}>
-        <label>Amount:</label>
-        <input
-          type="number"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-        <label>Description:</label>
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <button type="submit">Add Expense</button>
+    <div className="budget-tracker">
+      <h1 className="title">Budget Tracker</h1>
+      <form onSubmit={addExpense} className="form">
+        <div className="input-group">
+          <label htmlFor="amount" className="label">Amount:</label>
+          <input
+            id="amount"
+            type="number"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            className="input"
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="description" className="label">Description:</label>
+          <input
+            id="description"
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="input"
+          />
+        </div>
+        <button type="submit" className="submit-btn">Add Expense</button>
       </form>
-      <ul>
+      <ul className="expense-list">
         {budget.map((item, index) => (
-          <li key={index}>
-            {item.description}: ${item.amount}
+          <li key={index} className="expense-item">
+            <span className="description">{item.description}</span>
+            <span className="amount">${item.amount}</span>
           </li>
         ))}
       </ul>
