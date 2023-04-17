@@ -10,13 +10,28 @@ const showNav = () =>{
   setActive('navBar activeNavBar')
 }
 
+
+//code to remove navbar
 const removeNav=()=>{
   setActive('navBar')
 }
 
+//code to add background color to the header
+const [transparent, setTransparent] = useState('header')
+const addbg = () =>{
+  if (window.scrollY >= 10){
+    setTransparent('header activeNavBar')
+  }
+  else{
+    setTransparent('header')
+  }
+}
+  window.addEventListener('scroll', addbg)
+
+
   return (
     <section className='navBarSection'>
-      <div className='header'>
+      <div className={transparent}>
         <div className='logoDiv'>
           <a href="#" className='logo'>
             <h1><SiYourtraveldottv className="icon"/>
