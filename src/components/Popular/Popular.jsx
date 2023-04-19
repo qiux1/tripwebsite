@@ -1,6 +1,8 @@
 import React from 'react'
 import './Popular.scss'
 import Slider from 'react-slick';
+import SearchBar from '../SearchBar/SearchBar';
+
 import {BsDot, BsArrowLeftShort, BsArrowRightShort} from 'react-icons/bs'
 
 import Tokyo from '../../assets/Tokyo.jpg'
@@ -9,6 +11,7 @@ import London from '../../assets/London.jpg'
 import Paris from '../../assets/Paris.jpg'
 import Chongqing from '../../assets/Chongqing.jpg'
 import NewYork from '../../assets/NewYork.jpg'
+import { useState } from 'react';
 
 //right now I will create a map for all the destination for
 //temp value. Later on, I will connect the app with mongoDB
@@ -91,10 +94,23 @@ const Popular = () => {
     ],
   };
 
+  const [filterData,setFilterData] = useState(Data);
+
+  const handleSearch =(searchTerm) =>{
+    const term = searchTerm.toLowerCase();
+    const newData = Data.filter(
+      ({destTitle, Country, Description}) =>
+        destTitle.toLowerCase().includes(term) ||
+        Country.toLowerCase().includes(term) ||
+        Description.toLowerCase().includes(term)
+    );
+    setFilterData(newData);
+  };
+
   return (
     <section className='popular section container'>
       <div className='secContainer'>
-
+        <SearchBar onSearch={handleSearch} />
         <div className='secHeader flex'>
           <div className='textDiv'>
             <h2 className='secTitle'>
@@ -110,7 +126,7 @@ const Popular = () => {
         <div className='mainContent'>
           <Slider {...settings}>
           {
-            Data.map(({id, imgSrc, destTitle, Country, Description}) =>{
+            filterData.map(({id, imgSrc, destTitle, Country, Description}) =>{
               return(
                 <div className='singleDestination' key={id}>
                   <div className='desImage'>
