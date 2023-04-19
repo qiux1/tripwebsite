@@ -1,6 +1,6 @@
 import React from 'react'
 import './Popular.scss'
-
+import Slider from 'react-slick';
 import {BsDot, BsArrowLeftShort, BsArrowRightShort} from 'react-icons/bs'
 
 import Tokyo from '../../assets/Tokyo.jpg'
@@ -65,6 +65,32 @@ const Data = [
 ]
 
 const Popular = () => {
+  const settings ={
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow : 1,
+    slidesToScroll: 1,
+    nextArrow : <BsArrowRightShort  className='icon'/>,
+    prevArrow : <BsArrowLeftShort  className='icon leftIcon'/>,
+    responsive:[
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow :2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow :1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <section className='popular section container'>
       <div className='secContainer'>
@@ -79,18 +105,14 @@ const Popular = () => {
             </p>
 
           </div>
-
-          <div className='iconDiv flex'>
-            <BsArrowLeftShort className='icon leftIcon' />
-            <BsArrowRightShort className='icon'/>
-          </div>
         </div> 
 
-        <div className='mainContent grid'>
+        <div className='mainContent'>
+          <Slider {...settings}>
           {
             Data.map(({id, imgSrc, destTitle, Country, Description}) =>{
               return(
-                <div className='singleDestination'>
+                <div className='singleDestination' key={id}>
                   <div className='desImage'>
                     <img src={imgSrc} alt='Image Title' />
 
@@ -100,7 +122,6 @@ const Popular = () => {
 
                       <BsArrowRightShort className='icon'/>
                     </div>
-
                   </div>
 
                   <div className='destFooter'>
@@ -124,6 +145,8 @@ const Popular = () => {
               )
             })
           }
+          </Slider>
+          
         </div>
       </div>
 
