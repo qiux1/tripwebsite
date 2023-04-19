@@ -9,6 +9,7 @@ import Blog from './components/Blog/Blog'
 import Footer from './components/Footer/Footer'
 import BudgetTracker from './components/BudgetTracker/BudgetTracker';
 import Playground from './components/Playground/Playground'
+import CurrencyConverter from './components/CurrencyConverter/CurrencyConverter'
 
 
 const App = () => {
@@ -53,6 +54,7 @@ const App = () => {
         <Popular/>
         <Offers/>
         <BudgetTracker/>
+        <CurrencyConverter />
         <Playground cards={cards}/>
         <About/>
         <Blog/>
