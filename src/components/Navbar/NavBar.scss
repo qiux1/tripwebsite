@@ -37,9 +37,9 @@
             }
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen {
             .navBar{
-                background: var(--greyBg);
+                background: var(--whiteColor);
                 position: absolute;
                 height: max-content;
                 padding: 1rem;
