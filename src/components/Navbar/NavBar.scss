@@ -37,7 +37,7 @@
             }
         }
 
-        @media screen {
+        @media screen and (max-width: 768px) {
             .navBar{
                 background: var(--whiteColor);
                 position: absolute;
@@ -110,9 +110,19 @@
                     &:hover .icon{
                         color: var(--HoverColor);
                     }
-            }
+                }
 
             
+            }
+
+            .toggleNavBar{
+                .icon{
+                    font-size: 25px;
+                    color: var(--whiteColor);
+                    &:hover{
+                        color: var(--PrimaryColor);
+                    }
+                }
             }
 
             .activeNavBar{
@@ -120,15 +130,83 @@
             }
         }
 
-        .toggleNavBar{
-            .icon{
-                font-size: 25px;
-                color: var(--whiteColor);
-                &:hover{
-                    color: var(--PrimaryColor);
+        @media screen and (min-width: 769px) {
+            .navBar {
+                display: flex;
+                align-items: center;
+      
+                .navLists {
+                    display: flex;
+                    align-items: center;
+      
+                    .navItem {
+                        margin-right: 1rem;
+      
+                        &:last-child {
+                            margin-right: 0;
+                        }
+      
+                        .navLink {
+                            color: var(--whiteColor);
+                            font-size: 0.9rem;
+                            font-weight: 600;
+                            &:hover {
+                                color: var(--PrimaryColor);
+                            }
+                        }
+                    }
+
+                    .headerBtns {
+                        display: flex;
+                        align-items: center;
+                        
+                        .btn {
+                            margin-left: 1rem;
+      
+                            a {
+                                font-weight: 600;
+      
+                                &:hover {
+                                    color: var(--whiteColor);
+                                }
+                            }
+                        }
+      
+                        .loginBtn {
+                            background: none;
+                            border: 1px solid var(--PrimaryColor);
+                            color: var(--PrimaryColor);
+      
+                            a {
+                                color: var(--PrimaryColor);
+                            }
+      
+                            &:hover {
+                                background: var(--HoverColor);
+      
+                                a {
+                                    color: var(--whiteColor);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .closeNavBar{
+                    display: none;
+                }
+
+                
+            }
+
+            .toggleNavBar{
+                .icon{
+                    display: none;
                 }
             }
         }
+
+        
     }
 
     .activeNavBar{

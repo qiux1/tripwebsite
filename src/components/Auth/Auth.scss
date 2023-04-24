@@ -1,0 +1,76 @@
+:root {
+    --PrimaryColor: hsl(26, 93%, 50%);
+    --HoverColor: hsl(26, 90%, 42%);
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(0, 0%, 18%);
+    --textColor: hsl(240, 1%, 48%);
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --greyBg: hsla(0, 0%, 96%, 0.356);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: hsl(330, 12%, 97%);
+  }
+  
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--greyBg);
+  }
+  
+  .auth-box {
+    background-color: var(--whiteColor);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+  }
+  
+  .auth-box h2 {
+    margin-bottom: 1.5rem;
+    color: var(--blackColor);
+  }
+  
+  .auth-box form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .auth-box form div {
+    margin-bottom: 1rem;
+  }
+  
+  .auth-box label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--textColor);
+  }
+  
+  .auth-box input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--greyText);
+    background-color: var(--inputColor);
+    color: var(--textColor);
+  }
+  
+  .auth-box input:focus {
+    border-color: var(--PrimaryColor);
+  }
+  
+  .auth-box button {
+    background-color: var(--PrimaryColor);
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem;
+    color: var(--whiteColor);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .auth-box button:hover {
+    background-color: var(--HoverColor);
+  }
+  
