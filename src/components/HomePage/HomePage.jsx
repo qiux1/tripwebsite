@@ -1,8 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './HomePage.scss'
 import DateRangePicker  from './DateRangePicker'
+import { StandaloneSearchBox } from '@react-google-maps/api';
 
-const HomePage = () => {
+const HomePage = ({onSearch }) => {
+  const [location, setLocation] = useState('');
+  const [dates, setDates] = useState({
+    startDate: new Date(),
+    endDate: new Date(),
+  });
+  const [budget, setBudget] = useState('');
+  const [searchBox, setSearchBox] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch({ location, dates, budget });
+  };
+
+  const onPlacesChanged = () =>{
+    if (searchBox) {
+      const places = searchBox.getPlaces();
+      if (places.length > 0){
+        setLocation(places[0].formatted_address);
+      }
+    }
+  };
+
+  const onLoad = (ref) => {
+    setSearchBox(ref);
+  }
+
+  const handleDateChange = ({ startDate, endDate }) => {
+    setDates({ startDate, endDate });
+  };
+
   return (
     <section className='home'>
       <div className='secContainer container'>
@@ -22,26 +53,39 @@ const HomePage = () => {
           </button>
         </div>
       
-        <div className='homeCardGrid'>
+        <form onSubmit={handleSubmit} className='homeCardGrid'>
 
           <div className='locationDiv'>
             <label htmlFor='location'>Location</label>
-            <input type='text' placeholder='Dream Destination'></input>
+            <StandaloneSearchBox 
+              onLoad={onLoad}
+              onPlacesChanged={onPlacesChanged}>
+              <input 
+                type='text' 
+                placeholder='Dream Destination'
+                value={location}
+                onChange={(e) => setLocation(e.target.value)} />
+            </StandaloneSearchBox>
+            
           </div>
 
           <div className='dateDiv'>
-            <DateRangePicker />
+            <DateRangePicker value={dates} onChange={handleDateChange} />
           </div>
 
           <div className='priceDiv'>
             <label htmlFor='price'>Price</label>
-            <input type='text' placeholder='$140-$500'></input>
+            <input 
+              type='text' 
+              placeholder='Budget' 
+              value={budget}
+              onChange={(e) => setBudget(e.target.value)}/>
           </div>
 
           <button className='btn'>
             Search
           </button>
-        </div>
+        </form>
 
         </div>
     </section>

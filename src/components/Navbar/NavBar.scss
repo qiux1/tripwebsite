@@ -49,6 +49,7 @@
                 box-shadow: 0 2px 4px rgba(209, 209, 209, 0.904);
                 transition: 0.5s ease;
                 z-index: 1000;
+                
                 .navLists{
                     flex-direction: column;
                     justify-content: center;
@@ -111,8 +112,6 @@
                         color: var(--HoverColor);
                     }
                 }
-
-            
             }
 
             .toggleNavBar{
@@ -134,18 +133,18 @@
             .navBar {
                 display: flex;
                 align-items: center;
-      
+                
                 .navLists {
                     display: flex;
                     align-items: center;
-      
+                    
                     .navItem {
                         margin-right: 1rem;
-      
+                        
                         &:last-child {
                             margin-right: 0;
                         }
-      
+                        
                         .navLink {
                             color: var(--whiteColor);
                             font-size: 0.9rem;
@@ -162,28 +161,28 @@
                         
                         .btn {
                             margin-left: 1rem;
-      
+                            
                             a {
                                 font-weight: 600;
-      
+                                
                                 &:hover {
                                     color: var(--whiteColor);
                                 }
                             }
                         }
-      
+                        
                         .loginBtn {
                             background: none;
                             border: 1px solid var(--PrimaryColor);
                             color: var(--PrimaryColor);
-      
+                            
                             a {
                                 color: var(--PrimaryColor);
                             }
-      
+                            
                             &:hover {
                                 background: var(--HoverColor);
-      
+                                
                                 a {
                                     color: var(--whiteColor);
                                 }
@@ -195,8 +194,6 @@
                 .closeNavBar{
                     display: none;
                 }
-
-                
             }
 
             .toggleNavBar{
@@ -205,8 +202,6 @@
                 }
             }
         }
-
-        
     }
 
     .activeNavBar{
