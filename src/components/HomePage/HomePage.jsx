@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom';
 import './HomePage.scss'
 import DateRangePicker  from './DateRangePicker'
 import { StandaloneSearchBox } from '@react-google-maps/api';
@@ -10,11 +11,12 @@ const HomePage = ({onSearch }) => {
     endDate: new Date(),
   });
   const [budget, setBudget] = useState('');
-  const [searchBox, setSearchBox] = useState('')
+  const [searchBox, setSearchBox] = useState('');
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch({ location, dates, budget });
+    navigate('/map', {state:{searchParams: {location, startDate: dates.startDate, endDate: dates.endDate, budget}}})
   };
 
   const onPlacesChanged = () =>{
@@ -82,7 +84,7 @@ const HomePage = ({onSearch }) => {
               onChange={(e) => setBudget(e.target.value)}/>
           </div>
 
-          <button className='btn'>
+          <button className='btn' type='submit'>
             Search
           </button>
         </form>

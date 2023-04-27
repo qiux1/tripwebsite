@@ -1,0 +1,65 @@
+:root{
+    --PrimaryColor:hsl(26, 93%, 50%);
+    --HoverColor:hsl(26, 90%, 42%);
+    --whiteColor:hsl(0, 0%, 100%);
+    --blackColor:hsl(0, 0%, 18%);
+    --textColor:hsl(240, 1%, 48%);
+    --whiteColorDeam:hsl(0, 0%, 93%);
+    --greyBg:hsla(0, 0%, 96%, 0.356);
+    --greyText:rgb(190, 190,190);
+    --inputColor: hsl(330, 12%, 97%);
+}
+
+.mapPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--textColor);
+        margin-bottom: 1rem;
+    }
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-self: center;
+
+        label {
+            color: var(--textColor);
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        input {
+            padding: 0.5rem;
+            margin: 0.5rem;
+            border: 1px solid var(--inputColor);
+            color: var(--textColor);
+        }
+
+        button {
+            background-color: var(--PrimaryColor);
+            color: var(--whiteColor);
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            border: none;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover{
+                background-color: var(--HoverColor);
+            }
+        }
+    }
+
+    .google-map {
+        margin-top: 1rem;
+        width: 100%;
+        height: 50vh;
+    }
+}
