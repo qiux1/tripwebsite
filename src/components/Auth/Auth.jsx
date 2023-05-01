@@ -56,44 +56,7 @@ const Signup = ({ onLoginStateChange }) => {
       window.alert("Signup Failed");
     }
   };
-  //const formik = useFormik({
-  //  initialValues: {
-  //    username: "",
-  //    email: "",
-  //    password: "",
-  //    confirmPassword: "",
-  //  },
-  //  validationSchema: Yup.object({
-  //    username: Yup.string().required("Username is required"),
-  //    email: Yup.string().email("Invalid Email Address").required("Email is required"),
-  //    password: Yup.string()
-  //      .required("Password is required")
-  //      .matches(
-  //        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-  //        "Must contain at least one uppercase, one lowercase, one number and one special character"
-  //      ),
-  //    confirmPassword: Yup.string()
-  //      .oneOf([Yup.ref("password"), null], "Password must match")
-  //      .required("Confirm Password is required"),
-  //  }),
-  //  onSubmit: async (values) =>{
-  //    values.preventDefault();
-  //    // Check if the form is valid before allowing the user to sign up
-  //    if (!formik.isValid || !formik.dirty) {
-  //      window.alert("Please provide valid input values");
-  //      return;
-  //    }
-  //    const response = await tempApiCall(values);
-  //    console.log(response.success);
-  //    if (response.success){
-  //      onLoginStateChange(true);
-  //      navigate("/");
-  //    } else {
-  //      window.alert("Signup Failed");
-  //    }
-  //  }
-  //})
-
+  
   //tempApi to simulate the behavior of an actual API call 
   //without actually connecting to a real backend or database
   const tempApiCall = (values) =>{
