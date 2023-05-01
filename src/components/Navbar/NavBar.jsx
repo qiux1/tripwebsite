@@ -1,34 +1,39 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { Dropdown } from "react-bootstrap";
 import './NavBar.scss'
 import { SiYourtraveldottv } from 'react-icons/si'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import {TbGridDots} from 'react-icons/tb'
 
 import { Signup, Login } from "../Auth/Auth";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 const NavBar = () => {
-//code to toggle and show navbar
-const[active, setActive] = useState('navBar')
-const showNav = () =>{
-  setActive('navBar activeNavBar')
-}
-
-//code to remove navbar
-const removeNav=()=>{
-  setActive('navBar')
-}
-
-//code to add background color to the header
-const [transparent, setTransparent] = useState('header')
-const addbg = () =>{
-  if (window.scrollY >= 10){
-    setTransparent('header activeNavBar')
+  //code to toggle and show navbar
+  const[active, setActive] = useState('navBar')
+  //check if user is logged in or not
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  
+  const showNav = () =>{
+    setActive('navBar activeNavBar')
   }
-  else{
-    setTransparent('header')
+
+  //code to remove navbar
+  const removeNav=()=>{
+    setActive('navBar')
   }
-}
+
+  //code to add background color to the header
+  const [transparent, setTransparent] = useState('header')
+  const addbg = () =>{
+    if (window.scrollY >= 10){
+      setTransparent('header activeNavBar')
+    }
+    else{
+      setTransparent('header')
+    }
+  }
   window.addEventListener('scroll', addbg)
 
   // State for Login and Signup modals
@@ -40,6 +45,15 @@ const addbg = () =>{
   const handleShowLoginModal = () => setShowLoginModal(true);
   const handleCloseSignupModal = () => setShowSignupModal(false);
   const handleShowSignupModal = () => setShowSignupModal(true);
+  const handleLogin = (userData) =>{
+    setUser(userData);
+    setIsLoggedIn(true);
+  }
+
+  const handleLogout =() =>{
+    setUser(null);
+    setIsLoggedIn(false);
+  }
 
   return (
     <section className='navBarSection'>
@@ -59,45 +73,63 @@ const addbg = () =>{
             </li>
 
             <li className='navItem'>
-              <a href='#' className='navLink'>Products</a>
-            </li>
-
-            <li className='navItem'>
-              <a href='#' className='navLink'>Resources</a>
-            </li>
-
-            <li className='navItem'>
-              <a href='#' className='navLink'>Contacts</a>
+              <a href='#' className='navLink'>About</a>
             </li>
 
             <li className='navItem'>
               <a href='#' className='navLink'>Blog</a>
             </li>
 
-            <div className="headerBtns flex">
-              <button className="btn loginBtn" onClick={handleShowLoginModal}>
-                Log in
-              </button>
-              <Modal show={showLoginModal} onHide={handleCloseLoginModal}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Login</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <Login />
-                </Modal.Body>
-              </Modal>
+            <li className='navItem'>
+              <a href='#' className='navLink'>TripPlanner</a>
+            </li>
 
-              <button className="btn signUpBtn" onClick={handleShowSignupModal}>
-                Sign Up
-              </button>
-              <Modal show={showSignupModal} onHide={handleCloseSignupModal}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Sign up</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <Signup />
-                </Modal.Body>
-              </Modal>
+            <div className="headerBtns flex">
+              {!isLoggedIn ? (
+                <>
+                  <button className="btn loginBtn" onClick={handleShowLoginModal}>
+                    Log in
+                  </button>
+                  <Modal show={showLoginModal} onHide={handleCloseLoginModal}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Login</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <Login onLogin={handleLogin}/>
+                    </Modal.Body>
+                  </Modal>
+
+                  <button className="btn signUpBtn" onClick={handleShowSignupModal}>
+                    Sign Up
+                  </button>
+                  <Modal show={showSignupModal} onHide={handleCloseSignupModal}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Sign up</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <Signup />
+                    </Modal.Body>
+                  </Modal>
+                </>
+              ) : (
+                <>
+                  <Dropdown>
+                    <Dropdown.Toggle className="btn userProfileBtn" id = "userProfileDropdown">
+                      User Profile
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item href='#/profile'>Profile</Dropdown.Item>
+                      <Dropdown.Item href='#/pastTrips'>Past Trips</Dropdown.Item>
+                      <Dropdown.Item href='#/upcomingTrips'>Upcoming Trips</Dropdown.Item>
+                      <Dropdown.Item href='#/settings'>Settings</Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </>
+              )}
+              
             </div>
           </ul>
 

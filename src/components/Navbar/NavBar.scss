@@ -100,6 +100,16 @@
                                 }
                             }
                         }
+                        .userProfileBtn {
+                            background: none;
+                            border: 1px solid var(--PrimaryColor);
+                            color: var(--PrimaryColor);
+                
+                            &:hover {
+                                background: var(--HoverColor);
+                                color: var(--whiteColor);
+                            }
+                        }
                     }
                 }
     
@@ -129,7 +139,7 @@
             }
         }
 
-        @media screen and (min-width: 769px) {
+        @media screen and (min-width: 768px) {
             .navBar {
                 display: flex;
                 align-items: center;
@@ -186,6 +196,17 @@
                                 a {
                                     color: var(--whiteColor);
                                 }
+                            }
+                        }
+
+                        .userProfileBtn {
+                            background: none;
+                            border: 1px solid var(--PrimaryColor);
+                            color: var(--PrimaryColor);
+                
+                            &:hover {
+                                background: var(--HoverColor);
+                                color: var(--whiteColor);
                             }
                         }
                     }
