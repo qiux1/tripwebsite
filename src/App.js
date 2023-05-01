@@ -27,7 +27,7 @@ const MainLayout = () => (
 );
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <Router>
     <NavBar isLogin={isLogin} setIsLogin={setIsLogin} />
