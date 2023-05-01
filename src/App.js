@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './app.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/Navbar/NavBar';
@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer';
 import BudgetTracker from './components/BudgetTracker/BudgetTracker';
 import CurrencyConverter from './components/CurrencyConverter/CurrencyConverter';
 import MapPage from './components/MapPage/MapPage';
+import { Signup } from './components/Auth/Auth';
 
 const MainLayout = () => (
   <div>
@@ -26,12 +27,17 @@ const MainLayout = () => (
 );
 
 const App = () => {
+  const [isLogin, setIsLogin] = useState(true);
   return (
     <Router>
-      <NavBar />
+    <NavBar isLogin={isLogin} setIsLogin={setIsLogin} />
       <Routes>
         <Route path="/" element={<MainLayout />} />
         <Route path="/map" element={<MapPage />} />
+        <Route 
+          path="/signup" 
+          element={<Signup onLoginStateChange={setIsLogin} />}
+          />
       </Routes>
     </Router>
   );

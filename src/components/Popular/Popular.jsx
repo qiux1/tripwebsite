@@ -2,6 +2,8 @@ import React from 'react'
 import './Popular.scss'
 import Slider from 'react-slick';
 import SearchBar from '../SearchBar/SearchBar';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import {BsDot, BsArrowLeftShort, BsArrowRightShort} from 'react-icons/bs'
 

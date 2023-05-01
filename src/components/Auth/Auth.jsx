@@ -28,8 +28,13 @@ const Signup = ({ onLoginStateChange }) => {
         .required("Confirm Password is required"),
     }),
     onSubmit: async (values) =>{
-      const response = tempApiCall(values);
-
+      // Check if the form is valid before allowing the user to sign up
+      if (!formik.isValid || !formik.dirty) {
+        window.alert("Please provide valid input values");
+        return;
+      }
+      const response = await tempApiCall(values);
+      console.log(response.success);
       if (response.success){
         onLoginStateChange(true);
         navigate("/");
@@ -97,7 +102,7 @@ const Signup = ({ onLoginStateChange }) => {
             <input
               type="password"
               id="confirmPassword"
-              {...formik.getFieldHelpers("confirmPassword")}
+              {...formik.getFieldProps("confirmPassword")}
             />
             {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
               <div>{formik.errors.confirmPassword}</div>

@@ -8,13 +8,11 @@ import {TbGridDots} from 'react-icons/tb'
 import { Signup, Login } from "../Auth/Auth";
 import { Modal } from "react-bootstrap";
 
-const NavBar = () => {
+const NavBar = ({isLogin, setIsLogin}) => {
   //code to toggle and show navbar
   const[active, setActive] = useState('navBar')
   //check if user is logged in or not
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
-  
+  //const[user, setUser] = useState(null);
   const showNav = () =>{
     setActive('navBar activeNavBar')
   }
@@ -45,14 +43,13 @@ const NavBar = () => {
   const handleShowLoginModal = () => setShowLoginModal(true);
   const handleCloseSignupModal = () => setShowSignupModal(false);
   const handleShowSignupModal = () => setShowSignupModal(true);
-  const handleLogin = (userData) =>{
-    setUser(userData);
-    setIsLoggedIn(true);
+  const handleLogin = (isLoggedIn) =>{
+    setIsLogin(isLoggedIn);
   }
 
   const handleLogout =() =>{
-    setUser(null);
-    setIsLoggedIn(false);
+    //setUser(null);
+    setIsLogin(false);
   }
 
   return (
@@ -85,7 +82,7 @@ const NavBar = () => {
             </li>
 
             <div className="headerBtns flex">
-              {!isLoggedIn ? (
+              {!isLogin ? (
                 <>
                   <button className="btn loginBtn" onClick={handleShowLoginModal}>
                     Log in
@@ -95,7 +92,7 @@ const NavBar = () => {
                       <Modal.Title>Login</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      <Login onLogin={handleLogin}/>
+                      <Login onLoginStateChange={handleLogin}/>
                     </Modal.Body>
                   </Modal>
 
@@ -107,7 +104,7 @@ const NavBar = () => {
                       <Modal.Title>Sign up</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      <Signup />
+                      <Signup onLoginStateChange={handleLogin}/>
                     </Modal.Body>
                   </Modal>
                 </>
@@ -129,7 +126,7 @@ const NavBar = () => {
                   </Dropdown>
                 </>
               )}
-              
+
             </div>
           </ul>
 
