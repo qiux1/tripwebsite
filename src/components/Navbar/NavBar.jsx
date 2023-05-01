@@ -92,7 +92,7 @@ const NavBar = ({isLogin, setIsLogin}) => {
                       <Modal.Title>Login</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      <Login onLoginStateChange={handleLogin}/>
+                      <Login onLoginStateChange={handleLogin} />
                     </Modal.Body>
                   </Modal>
 

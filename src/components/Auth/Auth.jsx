@@ -116,14 +116,34 @@ const Signup = ({ onLoginStateChange }) => {
   );
 };
 
-const Login = () => {
+const Login = ({ onLoginStateChange }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    // perform login logic with username and password
-    console.log("Logging in...");
+
+    // Perform login logic with username and password
+    // Simulating a successful login
+    const response = await tempApiCall({ username, password });
+    console.log(response.success);
+    if (response.success) {
+      onLoginStateChange(true);
+      // Navigate to home page or any other page after successful login
+    } else {
+      window.alert("Login Failed");
+    }
+  };
+
+  //tempApi to simulate the behavior of an actual API call
+  //without actually connecting to a real backend or database
+  const tempApiCall = (values) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log("User Data Checked: ", values);
+        resolve({ success: true });
+      }, 1000);
+    });
   };
 
   return (

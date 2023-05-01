@@ -11,7 +11,7 @@ import Footer from './components/Footer/Footer';
 import BudgetTracker from './components/BudgetTracker/BudgetTracker';
 import CurrencyConverter from './components/CurrencyConverter/CurrencyConverter';
 import MapPage from './components/MapPage/MapPage';
-import { Signup } from './components/Auth/Auth';
+import { Login, Signup } from './components/Auth/Auth';
 
 const MainLayout = () => (
   <div>
@@ -34,6 +34,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainLayout />} />
         <Route path="/map" element={<MapPage />} />
+        <Route 
+          path="/login" 
+          element={<Login onLoginStateChange={setIsLogin} />}
+          />
         <Route 
           path="/signup" 
           element={<Signup onLoginStateChange={setIsLogin} />}
