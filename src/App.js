@@ -1,15 +1,15 @@
-import React from 'react'
-import './app.css'
+import React from 'react';
+import './app.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavBar from './components/Navbar/NavBar'
-import HomePage from './components/HomePage/HomePage'
-import Popular from './components/Popular/Popular'
-import Offers from './components/Offers/Offers'
-import About from './components/About/About'
-import Blog from './components/Blog/Blog'
-import Footer from './components/Footer/Footer'
+import NavBar from './components/Navbar/NavBar';
+import HomePage from './components/HomePage/HomePage';
+import Popular from './components/Popular/Popular';
+import Offers from './components/Offers/Offers';
+import About from './components/About/About';
+import Blog from './components/Blog/Blog';
+import Footer from './components/Footer/Footer';
 import BudgetTracker from './components/BudgetTracker/BudgetTracker';
-import CurrencyConverter from './components/CurrencyConverter/CurrencyConverter'
+import CurrencyConverter from './components/CurrencyConverter/CurrencyConverter';
 import MapPage from './components/MapPage/MapPage';
 
 const MainLayout = () => (
@@ -27,16 +27,14 @@ const MainLayout = () => (
 
 const App = () => {
   return (
-    <div>
+    <Router>
       <NavBar />
-      <Router>
-        <Routes>
-          <Route path="/" element={<MainLayout />} />
-          <Route path="/map" element={<MapPage />} />
-        </Routes>
-      </Router>
-    </div>
+      <Routes>
+        <Route path="/" element={<MainLayout />} />
+        <Route path="/map" element={<MapPage />} />
+      </Routes>
+    </Router>
   );
 };
 
-export default App
+export default App;
