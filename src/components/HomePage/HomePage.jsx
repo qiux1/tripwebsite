@@ -49,10 +49,6 @@ const HomePage = ({onSearch }) => {
           <p className='subTitle'>
             Get ready and plan your travel to your favorite city today!
           </p>
-
-          <button className='btn'>
-            <a href='#'>Explore now</a>
-          </button>
         </div>
       
         <form onSubmit={handleSubmit} className='homeCardGrid'>
