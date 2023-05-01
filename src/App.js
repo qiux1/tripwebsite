@@ -16,7 +16,6 @@ import { Login, Signup } from './components/Auth/Auth';
 const MainLayout = () => (
   <div>
     <HomePage />
-    <Popular />
     <Offers />
     <BudgetTracker />
     <CurrencyConverter />

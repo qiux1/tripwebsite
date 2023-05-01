@@ -22,6 +22,7 @@
     justify-content: center;
     margin: auto;
     position: relative;
+    margin-bottom: 50px;
 
     .secContainer{
         .homeText{
@@ -105,5 +106,9 @@
                 
             }
         }
+    }
+
+    .popular-section {
+        margin-top: 50px; // Adjust this value to create the desired amount of space
     }
 }
