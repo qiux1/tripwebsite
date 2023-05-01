@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import './Popular.scss'
 import Slider from 'react-slick';
 import SearchBar from '../SearchBar/SearchBar';
@@ -70,6 +71,8 @@ const Data = [
 ]
 
 const Popular = () => {
+  const navigate = useNavigate();
+
   const settings ={
     dots: true,
     infinite: true,
@@ -109,6 +112,10 @@ const Popular = () => {
     setFilterData(newData);
   };
 
+  const handleDestinationClick = (cityName) => {
+    navigate(`/destination/${cityName}`);
+  };
+
   return (
     <section className='popular section container'>
       <div className='secContainer'>
@@ -138,7 +145,9 @@ const Popular = () => {
                       <h3>{destTitle}</h3>
                       <p>{Description}</p>
 
-                      <BsArrowRightShort className='icon'/>
+                      <button onClick={() => handleDestinationClick(destTitle)}>
+                        <BsArrowRightShort className='icon'/>
+                      </button>
                     </div>
                   </div>
 

@@ -41,20 +41,20 @@ const HomePage = ({onSearch }) => {
     <>
       <section className='home'>
         <div className='secContainer container'>
-    
+
           <div className='homeText'>
-    
+
             <h1 className='title'>
               Plan Your Trip with GoGoGetaway
             </h1>
-    
+
             <p className='subTitle'>
               Get ready and plan your travel to your favorite city today!
             </p>
           </div>
-        
+
           <form onSubmit={handleSubmit} className='homeCardGrid'>
-    
+
             <div className='locationDiv'>
               <label htmlFor='location'>Location</label>
               <StandaloneSearchBox 
@@ -66,13 +66,13 @@ const HomePage = ({onSearch }) => {
                   value={location}
                   onChange={(e) => setLocation(e.target.value)} />
               </StandaloneSearchBox>
-              
+
             </div>
-    
+
             <div className='dateDiv'>
               <DateRangePicker value={dates} onChange={handleDateChange} />
             </div>
-    
+
             <div className='priceDiv'>
               <label htmlFor='price'>Price</label>
               <input 
@@ -81,19 +81,18 @@ const HomePage = ({onSearch }) => {
                 value={budget}
                 onChange={(e) => setBudget(e.target.value)}/>
             </div>
-    
+
             <button className='btn' type='submit'>
               Search
             </button>
           </form>
-            
+
         </div>
       </section>
       <div className='popular-section'>
         <Popular />
       </div>
     </>
-    
   )
 }
 
